@@ -1,6 +1,6 @@
 package com.keepa.api.backend.structs;
 
-import com.keepa.api.backend.KeepaAPI;
+import com.keepa.api.backend.KeepaAPIThreaded;
 
 import java.util.HashMap;
 
@@ -56,7 +56,7 @@ public class Response {
 	/**
 	 * Status of the request.
 	 */
-	public KeepaAPI.ResponseStatus status = KeepaAPI.ResponseStatus.PENDING;
+	public ResponseStatus status = ResponseStatus.PENDING;
 
 	/**
 	 * Results of the product request
@@ -133,14 +133,14 @@ public class Response {
 	static public Response NOT_ENOUGH_TOKEN = new Response();
 
 	static {
-		REQUEST_FAILED.status = KeepaAPI.ResponseStatus.FAIL;
-		REQUEST_REJECTED.status = KeepaAPI.ResponseStatus.REQUEST_REJECTED;
-		NOT_ENOUGH_TOKEN.status =  KeepaAPI.ResponseStatus.NOT_ENOUGH_TOKEN;
+		REQUEST_FAILED.status = ResponseStatus.FAIL;
+		REQUEST_REJECTED.status = ResponseStatus.REQUEST_REJECTED;
+		NOT_ENOUGH_TOKEN.status =  ResponseStatus.NOT_ENOUGH_TOKEN;
 	}
 
 	@Override
 	public String toString() {
-		if(status == KeepaAPI.ResponseStatus.OK)
+		if(status == ResponseStatus.OK)
 			return gson.toJson(this);
 		else
 			return gsonPretty.toJson(this);
